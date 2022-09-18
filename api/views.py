@@ -20,7 +20,7 @@ class ReminderApi(APIView):
             return Response(data)
 
         except:
-            
+
             data = {
                 "message" : 'today you dont have any reminder'
             }
@@ -33,4 +33,8 @@ class ReminderApi(APIView):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def put(self, request , pk):
+
+        pas
 

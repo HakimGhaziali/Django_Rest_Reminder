@@ -14,8 +14,6 @@ class MessageSerializer(serializers.ModelSerializer):
 
 class ReminderSerializer(serializers.ModelSerializer):
 
-    t_reminder = MessageSerializer(many=True, required=False)
-
     class Meta:
         model = Reminder
         fields = '__all__'
