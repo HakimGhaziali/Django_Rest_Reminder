@@ -41,7 +41,20 @@ INSTALLED_APPS = [
     'rest_framework',
     'api.apps.ApiConfig',
 
+
+
+    'dj_rest_auth',
+    'allauth',
+    'allauth.account',
+    'dj_rest_auth.registration',
+    'rest_framework.authtoken',
+    
+
 ]
+
+SITE_ID = 1
+
+EMAIL_BACKEND ='django.core.mail.backends.console.EmailBackend'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -54,6 +67,8 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'config.urls'
+
+
 
 TEMPLATES = [
     {

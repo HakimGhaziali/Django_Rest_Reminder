@@ -76,7 +76,8 @@ class MessageAPI(APIView):
     def post(self, request, pk):
 
         """"
-        handle post request to create new messages
+        handle post request to create new message 
+        for exisitng reminders 
         
         """
         serializer = MessageSerializer(data=request.data)
