@@ -25,6 +25,7 @@ defusedxml==0.7.1
 distlib==0.3.4
 distro==1.7.0
 distro-info===1.1build1
+dj-rest-auth==2.2.5
 Django==4.1
 django-allauth==0.51.0
 django-crispy-forms==1.14.0
