@@ -2,7 +2,7 @@ from django.shortcuts import render
 from rest_framework.views import APIView
 from reminder.models import Reminder , Message
 # Create your views here.
-from .serializers import ReminderSerializer
+from .serializers import ReminderSerializer , MessageSerializer
 from rest_framework.response import Response
 from rest_framework import status
 from django.http import JsonResponse
@@ -16,8 +16,13 @@ class ReminderApi(APIView):
         try:
             
             reminder = Reminder.objects.get(date_message=datetime.date.today())
-            data = ReminderSerializer(reminder).data
+            reminder = reminder.t_reminder.all()
+            data = MessageSerializer(reminder , many = True).data
             return Response(data)
+
+
+                   
+            reminder = Reminder.objects.get(date_message=datetime.date.today())
 
         except:
 
