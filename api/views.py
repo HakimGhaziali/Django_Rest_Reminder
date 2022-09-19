@@ -11,19 +11,26 @@ import datetime
 
 class ReminderApi(APIView):
 
-    def get(self, request):
+    """
+    A class used to represent an API view 
+    Prints the reminder message and you want to create or delete in reminder
+    """
 
+    def get(self, request):
+        """"
+        in this function handle get method
+        return message
+        """
+        
         try:
             
             reminder = Reminder.objects.get(date_message=datetime.date.today())
-            reminder = reminder.t_reminder.all()
+            reminder = reminder.text_reminder.all()
             data = MessageSerializer(reminder , many = True).data
             return Response(data)
 
 
-                   
-            reminder = Reminder.objects.get(date_message=datetime.date.today())
-
+                
         except:
 
             data = {
@@ -33,6 +40,11 @@ class ReminderApi(APIView):
 
 
     def post(self, request, format=None):
+
+        """"
+        handle post request to create new reminder
+        
+        """
         serializer = ReminderSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
@@ -55,6 +67,23 @@ class ReminderApi(APIView):
         return Response({'message': 'question deleted'})
         
 
+
+
+
+class MessageAPI(APIView):
+
+
+    def post(self, request, pk):
+
+        """"
+        handle post request to create new messages
+        
+        """
+        serializer = MessageSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 

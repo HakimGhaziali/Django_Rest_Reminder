@@ -17,7 +17,7 @@ class Reminder(models.Model):
 
 class Message(models.Model):
 
-    reminder = models.ForeignKey(Reminder ,on_delete=models.CASCADE , related_name='t_reminder' )
+    reminder = models.ForeignKey(Reminder ,on_delete=models.CASCADE , related_name='text_reminder' )
     heading = models.CharField(max_length=100)
 
 
